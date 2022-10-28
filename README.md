@@ -1,5 +1,5 @@
 # Repositorio Trabajo Práctico 1 de la materia Testing de Sistemas IoT
-# Carrera Especialista en Internet de las Cosas de UBA
+
 
 En este trabajo práctico se implementa verificación y tésting de código. Es parte de la materia Testing de IoT dictada por Esteban Volentini (https://github.com/evolentini) y Carlos Pantelides (https://github.com/cpantel) y
 
@@ -45,8 +45,8 @@ Enunciado: generar una clase llamada lista, cuyos componentes sean una clave y u
 * En una lista vacia, comprobar el error al borrar una clave
 
 
-# Pasos para la resolución 
-## <strong>Paso 1</strong> : instalación de las herramientas (en caso de que no se haya descargado el repositorio, y no se posea la estructura de directorios)
+## Pasos para la resolución 
+### <strong>Paso 1</strong> : instalación de las herramientas (en caso de que no se haya descargado el repositorio, y no se posea la estructura de directorios)
 
 Inicializamos node
     >npm init  
