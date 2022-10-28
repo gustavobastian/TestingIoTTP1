@@ -43,15 +43,14 @@ describe("en una lista vacia", ()=>{
 
 describe("agrego elementos a una lista vacia", ()=>{
     /*En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados*/
-    it("agrego elemento", ()=>{
-        var Lista = new ListaN();
+    var Lista = new ListaN();
+    it("agrego elemento", ()=>{        
         assert.equal(Lista.add("clave","valor"),true)
         assert.equal(Lista.count(),1)
     });
   
     /* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden*/
-    it("se puede recuperar el valor a partir de una clave",()=>{
-        var Lista = new ListaN();
+    it("se puede recuperar el valor a partir de una clave",()=>{        
         Lista.add("clave","valor");
         assert.equal(Lista.find("clave"),"valor");
     })
