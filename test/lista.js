@@ -4,11 +4,11 @@ Pruebas a realizar
 * En una lista vacia, comprobar que hay cero elementos almacenados --Done
 * En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados
 * En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados
+* En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas
+* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden
 * En una lista con elementos, comprobar el error al agregar una clave duplicada con la menor clave preexistente
 * En una lista con elementos, comprobar el error al agregar una clave duplicada con la mayor clave preexistente
 * En una lista con elementos, comprobar el error al agregar una clave duplicada con una clave intermedia preexistente
-* En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas
-* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden
 * En una lista con tres o mas elementos, consultar el valor de la primera clave y comprobar que coinciden
 * En una lista con tres o mas elementos, consultar el valor de la ultima clave y comprobar que coinciden
 * En una lista con tres o mas elementos, consultar el valor de una clave intermdia y comprobar que coinciden
@@ -56,6 +56,16 @@ describe("agregando elementos", ()=>{
         assert.equal(Lista.add(elemento),true)
         assert.equal(Lista.add(elemento2),true)
         assert.equal(Lista.count(),2)
+    })
+    
+    /* En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas*/
+    it("agrego elemento con clave vacia o no cadena", ()=>{
+        var Lista = new ListaN();
+        var elemento=["uno",1]        
+        var elemento2=["dos",null]        
+        assert.equal(Lista.add(elemento),false)
+        assert.equal(Lista.add(elemento2),false)
+        assert.equal(Lista.count(),0)
     })
 
 })
