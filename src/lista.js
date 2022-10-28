@@ -1,8 +1,14 @@
 module.exports = class Lista{
     constructor(){  
+        this.cuenta = 0;
     };
 
     count(){
-        return 0;
+        return this.cuenta;
+    }
+
+    add(elemento){
+        this.cuenta++;
+        return true;
     }
 };
