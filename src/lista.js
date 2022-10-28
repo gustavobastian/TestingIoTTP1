@@ -1,11 +1,10 @@
 module.exports = class Lista{
-    constructor(){  
-        this.cuenta = 0;
+    constructor(){          
         this.ArregloDeElementos=[];
     };
 
     count(){        
-        return this.cuenta;
+        return this.ArregloDeElementos.length;
     }
 
     add(clave,valor){
@@ -14,8 +13,7 @@ module.exports = class Lista{
         }
         else if((typeof(clave)!='string')||(typeof(valor)!='string')){
             return false;
-        }               
-        this.cuenta++;
+        }                       
         let element=[clave,valor];
         this.ArregloDeElementos.push(element);
         return true;       
