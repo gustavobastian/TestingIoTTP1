@@ -12,7 +12,7 @@ const assert = require("chai").assert;
 const ListaN = require("../src/lista");
 
 
-describe("en una lista vacia",async ()=>{
+describe("en una lista vacia", ()=>{
 
     var Lista = new ListaN();
     /*En una lista vacia, comprobar que hay cero elementos almacenados  */
@@ -22,14 +22,15 @@ describe("en una lista vacia",async ()=>{
     /*
     * En una lista vacia, comprobar el error al borrar una clave
     */
-    var resultado=await Lista.delete("uno");    
+    
 
-    it("No se puede borrar en lista vacia", ()=>{
+    it("No se puede borrar en lista vacia", async ()=>{
+        var resultado=await Lista.delete("uno");    
         assert.equal(resultado,false)
     });
 })
 
-describe("agrego elementos a una lista vacia", async ()=>{
+describe("agrego elementos a una lista vacia",  ()=>{
     /*En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados*/
     var Lista = new ListaN();
     it("agrego elemento", async ()=>{        
@@ -60,7 +61,7 @@ describe("agrego elementos a una lista vacia", async ()=>{
     })
 })
 
-describe("agrego 2 elementos a una lista vacia", async ()=>{
+describe("agrego 2 elementos a una lista vacia",  ()=>{
     var ListaLocal = new ListaN();
     it("agrego 2 elementos", async ()=>{        
         var element1=await ListaLocal.add("uno","1");
@@ -71,7 +72,7 @@ describe("agrego 2 elementos a una lista vacia", async ()=>{
     });   
 
     /* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden*/
-    it("se puede recuperar el valor a partir de una clave",async()=>{  
+    it("se puede recuperar el valor a partir de una clave", async()=>{  
         var resultado1=await ListaLocal.find("uno");
         var resultado2=await ListaLocal.find("dos");
         assert.equal(resultado1,"1");
@@ -82,7 +83,7 @@ describe("agrego 2 elementos a una lista vacia", async ()=>{
 
 
 
-describe("agrego elementos con clave duplicada", async ()=>{ 
+describe("agrego elementos con clave duplicada", ()=>{ 
     /*
     * En una lista con elementos, comprobar el error al agregar una clave duplicada con la menor clave preexistente
     * En una lista con elementos, comprobar el error al agregar una clave duplicada con la mayor clave preexistente
@@ -90,12 +91,12 @@ describe("agrego elementos con clave duplicada", async ()=>{
     */
 
     var Lista = new ListaN();
-    await Lista.add("uno","1");
-    await Lista.add("dos","2");
-            
-    var resultado=await Lista.add("uno","2");
+    
 
-    it("la funcion devuelve error",()=>{
+    it("la funcion devuelve error", async()=>{
+        await Lista.add("uno","1");
+        await Lista.add("dos","2");            
+        var resultado=await Lista.add("uno","2");
         assert.isFalse(resultado);
     });
 
@@ -103,8 +104,9 @@ describe("agrego elementos con clave duplicada", async ()=>{
         assert.equal(Lista.count(),2)
     });        
 
-    var resultado2=await Lista.add("dos","2");
-    it("la funcion devuelve error en el caso 2",()=>{
+    
+    it("la funcion devuelve error en el caso 2", async()=>{
+        var resultado2=await Lista.add("dos","2");
         assert.isFalse(resultado2);
     });
 
@@ -113,12 +115,13 @@ describe("agrego elementos con clave duplicada", async ()=>{
     });        
 })  
 
-describe("agrego elementos con valores erroneos", async ()=>{
+describe("agrego elementos con valores erroneos",  ()=>{
     /*En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas*/
     var Lista = new ListaN();
-    var resultado = await Lista.add(1,1);
+    
 
-    it("la funcion devuelve error",()=>{
+    it("la funcion devuelve error", async()=>{
+        var resultado = await Lista.add(1,1);
         assert.isFalse(resultado);
     });
 
@@ -129,64 +132,73 @@ describe("agrego elementos con valores erroneos", async ()=>{
 
 
 
-describe("elimino elementos a una lista ",async ()=>{
+describe("elimino elementos a una lista ", ()=>{
     var ListaLocal = new ListaN();
-    await ListaLocal.add("uno","1");
-    await ListaLocal.add("dos","2");
+    
     /*
      En una lista con elementos, comprobar el error al borrar una clave que no existe
      */
      
-     let resultado1=await ListaLocal.delete("seis");
-     it("No se puede borrar una clave que no existe", async ()=>{        
-         assert.equal(resultado1,false)
+     
+    it("No se puede borrar una clave que no existe", async ()=>{        
+        await ListaLocal.add("uno","1");
+        await ListaLocal.add("dos","2");
+        let resultado1=await ListaLocal.delete("seis");
+        assert.equal(resultado1,false)
      });
-     let resultado5 = await ListaLocal.count();
-     it("y no cambia la cantidad de elementos almacenados",async ()=>{                  
-             assert.equal(resultado5, 2);
+     
+    it("y no cambia la cantidad de elementos almacenados", async ()=>{                  
+        let resultado5 = await ListaLocal.count();
+        assert.equal(resultado5, 2);
      }); 
 
      /*
      * En una lista con elementos, borrar una clave y comprobar que al buscarla no existe
      */
-     var resultado2= await ListaLocal.delete("uno");
-     it("Se puede borrar una clave que existe", ()=>{
-         assert.equal(resultado2,true)
+     
+    it("Se puede borrar una clave que existe", async ()=>{
+        var resultado2= await ListaLocal.delete("uno");
+        assert.equal(resultado2,true)
      });
 
-     let resultado6= await ListaLocal.count();
-     it("y cambia la cantidad de elementos almacenados",async ()=>{
+     
+    it("y cambia la cantidad de elementos almacenados", async ()=>{
+        let resultado6= await ListaLocal.count();
         assert.equal(resultado6,1);
      }); 
 
-     let resultado3=await ListaLocal.find("uno");
-     it("y no se puede recuperar el elemento eliminado",async ()=>{
+     
+    it("y no se puede recuperar el elemento eliminado", async ()=>{
+        let resultado3=await ListaLocal.find("uno");
         assert.equal(resultado3,null);
      }); 
 })
 
 
 
-describe("actualizo elementos",async ()=>{
+describe("actualizo elementos", ()=>{
 
     var ListaLocal = new ListaN();
-        await ListaLocal.add("uno","1");
-        await ListaLocal.add("dos","2");    
+        
 
     /* * En una lista con elementos, comprobar el error al tratar de actualizar una clave que no existe*/
         
-        var resultado11= await ListaLocal.update("tres","6");
-           it("No se puede actualizar un valor de una clave que no existe",async ()=>{
+        
+        
+    it("No se puede actualizar un valor de una clave que no existe",async ()=>{
+            await ListaLocal.add("uno","1");
+            await ListaLocal.add("dos","2"); 
+            var resultado11= await ListaLocal.update("tres","6");
             assert.equal(resultado11, false);
         });
     /*
     * En una lista con elementos, actualizar el valor de la primera clave, consultar el valor de la primera clave y comprobar que se actualizo
     * En una lista con elementos, actualizar el valor de la ultima clave, consultar el valor de la primera clave y comprobar que se actualizo
     * En una lista con elementos, actualizar el valor de una clave intermedia, consultar el valor de la primera clave y comprobar que se actualizo */
-
-        var resultado12= await ListaLocal.update("uno","6");
-        var resultado13= await ListaLocal.find("uno");
+        var resultado13;
         it("Se puede actualizar un valor de una clave que existe",async ()=>{            
+            var resultado12= await ListaLocal.update("uno","6");
+            resultado13= await ListaLocal.find("uno");
             assert.equal(resultado12, true);
         });
         it("Se comprueba el valor actualizado",async ()=>{            
