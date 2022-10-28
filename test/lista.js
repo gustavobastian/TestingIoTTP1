@@ -39,8 +39,8 @@ describe("en una lista vacia", ()=>{
     })
 
     it("agrego elemento", ()=>{
-        var elemento=["uno","1"]        
-        assert.equal(Lista.add(elemento),true)
+        
+        assert.equal(Lista.add("clave","valor"),true)
         assert.equal(Lista.count(),1)
     })
 })
