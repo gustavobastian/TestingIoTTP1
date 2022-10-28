@@ -1,5 +1,8 @@
 module.exports = class Lista{
-    constructor(){
-        console.log("en mi constructor de lista")
+    constructor(){  
     };
+
+    count(){
+        return 0;
+    }
 };
