@@ -2,13 +2,8 @@
 /*
 Pruebas a realizar
 
-* En una lista con elementos, comprobar el error al agregar una clave duplicada con la menor clave preexistente
-* En una lista con elementos, comprobar el error al agregar una clave duplicada con la mayor clave preexistente
-* En una lista con elementos, comprobar el error al agregar una clave duplicada con una clave intermedia preexistente
-* En una lista con tres o mas elementos, consultar el valor de la primera clave y comprobar que coinciden
-* En una lista con tres o mas elementos, consultar el valor de la ultima clave y comprobar que coinciden
-* En una lista con tres o mas elementos, consultar el valor de una clave intermdia y comprobar que coinciden
-* En una lista con elementos, comprobar el error al buscar una clave que no existe
+
+
 * En una lista con elementos, comprobar el error al tratar de actualizar una clave que no existe
 * En una lista con elementos, actualizar el valor de la primera clave, consultar el valor de la primera clave y comprobar que se actualizo
 * En una lista con elementos, actualizar el valor de la ultima clave, consultar el valor de la primera clave y comprobar que se actualizo
@@ -46,10 +41,25 @@ describe("agrego elementos a una lista vacia", ()=>{
     });
   
     /* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden*/
+    //Los casos posteriores me parecen redundantes ya que utilizo la instrucción forEach que recorre todo el array
+    /*
+    * En una lista con tres o mas elementos, consultar el valor de la primera clave y comprobar que coinciden
+    * En una lista con tres o mas elementos, consultar el valor de la ultima clave y comprobar que coinciden
+    * En una lista con tres o mas elementos, consultar el valor de una clave intermdia y comprobar que coinciden
+    * */
     it("se puede recuperar el valor a partir de una clave",()=>{        
         Lista.add("clave","valor");
         assert.equal(Lista.find("clave"),"valor");
     })
+    /*
+    * En una lista con elementos, comprobar el error al buscar una clave que no existe   
+    Retorno null... no esta definido 
+    */
+    it("se presenta error si no existe la clave",()=>{                
+        var resultado=Lista.find(("clave2"),"valor");
+        assert.equal(resultado,null)
+    })
+
 })
 
 describe("agrego 2 elementos a una lista vacia", ()=>{
