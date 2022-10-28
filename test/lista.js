@@ -55,14 +55,21 @@ describe("agrego elementos", ()=>{
         assert.equal(Lista.add("clave2","valor2"),true)
         assert.equal(Lista.count(),2)
     });
-    /*En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas*/
-    it("agrego 2 elementos con tipos mal", ()=>{
-        var Lista = new ListaN();
-        assert.equal(Lista.add(1,2),false)
-        assert.equal(Lista.add(1,"as"),false)
-        assert.equal(Lista.add("asd",1),false)
-        assert.equal(Lista.add("clave2",null),false)
-        assert.equal(Lista.add(null,"1"),false)
-        assert.equal(Lista.count(),0)
-    });
+    
 })
+
+describe("agrego elementos con valores erroneos", ()=>{
+    /*En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas*/
+
+    var Lista = new ListaN();
+    var resultado = Lista.add(1,1);
+    it("la funcion devuelve error",()=>{
+        assert.isFalse(resultado);
+    })
+    it("y no cambia la cantidad de elementos almacenados",()=>{
+        assert.equal(Lista.count(),0)
+    })
+
+
+    
+})  
