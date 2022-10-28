@@ -15,7 +15,10 @@ module.exports = class Lista{
             return false;
         }               
         this.cuenta++;
-        return true;
-       
+        return true;       
+    }
+
+    find(clave){
+        return "valor";
     }
 };

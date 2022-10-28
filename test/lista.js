@@ -41,21 +41,34 @@ describe("en una lista vacia", ()=>{
     
 })
 
-describe("agrego elementos", ()=>{
+describe("agrego elementos a una lista vacia", ()=>{
     /*En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados*/
     it("agrego elemento", ()=>{
         var Lista = new ListaN();
         assert.equal(Lista.add("clave","valor"),true)
         assert.equal(Lista.count(),1)
     });
-    /*En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados*/
-    it("agrego 2 elementos", ()=>{
+  
+    /* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden*/
+    it("se puede recuperar el valor a partir de una clave",()=>{
         var Lista = new ListaN();
-        assert.equal(Lista.add("clave","valor"),true)
-        assert.equal(Lista.add("clave2","valor2"),true)
+        Lista.add("clave","valor");
+        assert.equal(Lista.find("clave"),"valor");
+    })
+})
+
+describe("agrego 2 elementos a una lista vacia", ()=>{
+    var Lista = new ListaN();
+    it("agrego 2 elementos", ()=>{        
+        assert.equal(Lista.add("uno","1"),true)
+        assert.equal(Lista.add("dos","2"),true)
         assert.equal(Lista.count(),2)
-    });
-    
+    });    
+    /* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden*/
+    it("se puede recuperar el valor a partir de una clave",()=>{  
+        assert.equal(Lista.find("uno"),"1");
+        assert.equal(Lista.find("dos"),"2");
+    })
 })
 
 describe("agrego elementos con valores erroneos", ()=>{
@@ -69,7 +82,6 @@ describe("agrego elementos con valores erroneos", ()=>{
     it("y no cambia la cantidad de elementos almacenados",()=>{
         assert.equal(Lista.count(),0)
     })
-
-
-    
 })  
+
+
