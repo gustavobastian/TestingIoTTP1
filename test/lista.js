@@ -1,7 +1,7 @@
 
 /*
 Pruebas a realizar
-* En una lista vacia, comprobar que hay cero elementos almacenados
+* En una lista vacia, comprobar que hay cero elementos almacenados --Done
 * En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados
 * En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados
 * En una lista con elementos, comprobar el error al agregar una clave duplicada con la menor clave preexistente
@@ -36,5 +36,11 @@ describe("en una lista vacia", ()=>{
 
     it("hay cero elementos", ()=>{
         assert.equal(Lista.count(),0)
+    })
+
+    it("agrego elemento", ()=>{
+        var elemento=["uno","1"]        
+        assert.equal(Lista.add(elemento),true)
+        assert.equal(Lista.count(),1)
     })
 })
