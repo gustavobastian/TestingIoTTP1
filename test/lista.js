@@ -13,7 +13,7 @@ Pruebas a realizar
 * En una lista con tres o mas elementos, agregar una clave menor intermedia entre las existentes, comprobar que la lista de claves se obtiene siempre ordenada
 * En una lista con elementos, borrar una clave y comprobar que al buscarla no existe
 * En una lista con elementos, comprobar el error al borrar una clave que no existe
-* En una lista vacia, comprobar el error al borrar una clave
+
 
 
 */
@@ -28,8 +28,14 @@ describe("en una lista vacia", ()=>{
     it("hay cero elementos", ()=>{
         assert.equal(Lista.count(),0)
     })
+    /*
+    * En una lista vacia, comprobar el error al borrar una clave
+    */
+    var resultado=Lista.delete("uno");
+    it("No se puede borrar en lista vacia", ()=>{
+        assert.equal(resultado,false)
+    })
 
-    
 })
 
 describe("agrego elementos a una lista vacia", ()=>{
@@ -87,7 +93,7 @@ describe("agrego elementos con clave duplicada", ()=>{
     Lista.add("uno","1");
     Lista.add("dos","2");
             
-    resultado=Lista.add("uno","2");
+    var resultado=Lista.add("uno","2");
     it("la funcion devuelve error",()=>{
         assert.isFalse(resultado);
     })
@@ -95,9 +101,9 @@ describe("agrego elementos con clave duplicada", ()=>{
         assert.equal(Lista.count(),2)
     })        
 
-    resultado2=Lista.add("dos","2");
+    var resultado2=Lista.add("dos","2");
     it("la funcion devuelve error en el caso 2",()=>{
-        assert.isFalse(resultado);
+        assert.isFalse(resultado2);
     })
     it("y no cambia la cantidad de elementos almacenados en el caso 2",()=>{
         assert.equal(Lista.count(),2)

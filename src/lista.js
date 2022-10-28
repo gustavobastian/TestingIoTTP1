@@ -36,4 +36,8 @@ module.exports = class Lista{
         });
         return value;
     }
+
+    delete(clave){
+        return false;
+    }
 };
