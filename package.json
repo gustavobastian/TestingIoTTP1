@@ -1,0 +1,25 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "description": "Primer práctico IoT",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "coverage": "nyc --reporter= html mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavobastian/TestingIoTTP1.git"
+  },
+  "author": "Gustavo Bastian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavobastian/TestingIoTTP1/issues"
+  },
+  "homepage": "https://github.com/gustavobastian/TestingIoTTP1#readme",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.1.0",
+    "nyc": "^15.1.0"
+  }
+}

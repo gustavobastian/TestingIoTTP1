@@ -1,40 +1,6 @@
-# Repositorio Trabajo Práctico 1 de la materia Testing de Sistemas IoT
 
-
-En este trabajo práctico se implementa verificación y tésting de código. Es parte de la materia Testing de IoT dictada por Esteban Volentini (https://github.com/evolentini) y Carlos Pantelides (https://github.com/cpantel) y
-
-
-Herramientas que se utilizan:
-
-* <strong>CHAI</strong>: Libreria para el lenguaje Javascript que incorpora funciones para garantizar que las pruebas lleguen a resultados esperados.
-
-        Url: https://www.chaijs.com/
-
-* <strong>SINON</strong>: Libreria Javascript para generar funciones Spy, Stub o Mock. Este tipo de funciones emulan funciones externas inyectadas en archivo que se prueba.
-
-        Url: https://sinonjs.org/      
-
-* <strong>MOCHA</strong>: Framework que automatiza Testing para el lenguaje Javascript
-
-        Url: https://mochajs.org/
-
-
-Enunciado: generar una clase llamada lista con los siguientes requerimientos:
-
-* Almacena pares clave:valor.
-* Las claves deben ser únicas.
-* Las claves son cadenas de texto.
-* Se debe poder recuperar un valor a partir de una clave.
-* Se debe poder actualizar el valor asociado a una clave.
-* Se debe poder recuperar la cantidad de elementos
-almacenados en la lista.
-* Se debe poder recuperar una lista ordenada con las claves
-almacenadas en la lista.
-* Se puede borrar una pareja a partir de la clave.
-
-
-Pruebas a realizar:
-
+/*
+Pruebas a realizar
 * En una lista vacia, comprobar que hay cero elementos almacenados
 * En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados
 * En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados
@@ -59,3 +25,14 @@ Pruebas a realizar:
 * En una lista vacia, comprobar el error al borrar una clave
 
 
+*/
+
+const assert = require("chai").assert;
+const Lista = require("../src/lista")
+
+describe("en una lista vacia", ()=>{
+
+    it("hay cero elementos", ()=>{
+        assert.fail("empezamos")
+    })
+})
