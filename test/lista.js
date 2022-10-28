@@ -1,11 +1,7 @@
 
 /*
 Pruebas a realizar
-* En una lista vacia, comprobar que hay cero elementos almacenados
-* En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados
-* En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados
-* En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas
-* En una lista vacia, agregar una clave con un valor conocido, consultar el valor asociado a la clave y comprobar que coinciden
+
 * En una lista con elementos, comprobar el error al agregar una clave duplicada con la menor clave preexistente
 * En una lista con elementos, comprobar el error al agregar una clave duplicada con la mayor clave preexistente
 * En una lista con elementos, comprobar el error al agregar una clave duplicada con una clave intermedia preexistente
@@ -70,9 +66,36 @@ describe("agrego 2 elementos a una lista vacia", ()=>{
     })
 })
 
+describe("agrego elementos con clave duplicada", ()=>{ 
+    /*
+    * En una lista con elementos, comprobar el error al agregar una clave duplicada con la menor clave preexistente
+    * En una lista con elementos, comprobar el error al agregar una clave duplicada con la mayor clave preexistente
+    * En una lista con elementos, comprobar el error al agregar una clave duplicada con una clave intermedia preexistente
+    */
+
+    var Lista = new ListaN();
+    Lista.add("uno","1");
+    Lista.add("dos","2");
+            
+    resultado=Lista.add("uno","2");
+    it("la funcion devuelve error",()=>{
+        assert.isFalse(resultado);
+    })
+    it("y no cambia la cantidad de elementos almacenados",()=>{
+        assert.equal(Lista.count(),2)
+    })        
+
+    resultado2=Lista.add("dos","2");
+    it("la funcion devuelve error en el caso 2",()=>{
+        assert.isFalse(resultado);
+    })
+    it("y no cambia la cantidad de elementos almacenados en el caso 2",()=>{
+        assert.equal(Lista.count(),2)
+    })        
+})  
+
 describe("agrego elementos con valores erroneos", ()=>{
     /*En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas*/
-
     var Lista = new ListaN();
     var resultado = Lista.add(1,1);
     it("la funcion devuelve error",()=>{
@@ -80,7 +103,7 @@ describe("agrego elementos con valores erroneos", ()=>{
     })
     it("y no cambia la cantidad de elementos almacenados",()=>{
         assert.equal(Lista.count(),0)
-    })
+    })        
 })  
 
 

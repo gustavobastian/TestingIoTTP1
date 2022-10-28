@@ -14,9 +14,17 @@ module.exports = class Lista{
         else if((typeof(clave)!='string')||(typeof(valor)!='string')){
             return false;
         }                       
-        let element=[clave,valor];
-        this.ArregloDeElementos.push(element);
-        return true;       
+
+        let busqueda= this.find(clave);
+        
+        if(busqueda==null){
+            let element=[clave,valor];
+            this.ArregloDeElementos.push(element);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     find(clave){
