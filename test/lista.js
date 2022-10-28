@@ -1,7 +1,7 @@
 
 /*
 Pruebas a realizar
-* En una lista vacia, comprobar que hay cero elementos almacenados --Done
+* En una lista vacia, comprobar que hay cero elementos almacenados
 * En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados
 * En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados
 * En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas
@@ -37,35 +37,10 @@ describe("en una lista vacia", ()=>{
     it("hay cero elementos", ()=>{
         assert.equal(Lista.count(),0)
     })
-})
 
-describe("agregando elementos", ()=>{    
-    /* En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenado*/
     it("agrego elemento", ()=>{
-        var Lista = new ListaN();
         var elemento=["uno","1"]        
         assert.equal(Lista.add(elemento),true)
         assert.equal(Lista.count(),1)
     })
-
-    /*En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados*/
-    it("agrego 2 elementos", ()=>{
-        var Lista = new ListaN();
-        var elemento=["uno","1"]        
-        var elemento2=["dos","2"]        
-        assert.equal(Lista.add(elemento),true)
-        assert.equal(Lista.add(elemento2),true)
-        assert.equal(Lista.count(),2)
-    })
-    
-    /* En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas*/
-    it("agrego elemento con clave vacia o no cadena", ()=>{
-        var Lista = new ListaN();
-        var elemento=["uno",1]        
-        var elemento2=["dos",null]        
-        assert.equal(Lista.add(elemento),false)
-        assert.equal(Lista.add(elemento2),false)
-        assert.equal(Lista.count(),0)
-    })
-
 })
