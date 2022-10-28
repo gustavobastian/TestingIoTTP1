@@ -35,8 +35,7 @@ module.exports = class Lista{
 
     async delete(clave){                
         let resultado= await this.find(clave);        
-        if(resultado==null){ 
-           // console.log("len:",this.ArregloDeElementos.length);           
+        if(resultado==null){            
             return false;
         }
         else{
@@ -55,5 +54,17 @@ module.exports = class Lista{
                 }
             };        
 
+    }
+    async update(clave,valor){
+        
+        let result= await this.find(clave);
+        if(result!=null){            
+            let indice=this.indexOf(clave);
+            this.ArregloDeElementos[indice].valor=valor;
+            return true;
+        }
+        else{            
+            return false;
+        }
     }
 };
