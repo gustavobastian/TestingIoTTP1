@@ -42,15 +42,27 @@ describe("en una lista vacia", ()=>{
 })
 
 describe("agrego elementos", ()=>{
+    /*En una lista vacía, al agregar un elemento, comprobar que hay un elemento almacenados*/
     it("agrego elemento", ()=>{
         var Lista = new ListaN();
         assert.equal(Lista.add("clave","valor"),true)
         assert.equal(Lista.count(),1)
-    })
+    });
+    /*En una lista vacía, al agregar dos elementos, comprobar que hay dos elemento almacenados*/
     it("agrego 2 elementos", ()=>{
         var Lista = new ListaN();
         assert.equal(Lista.add("clave","valor"),true)
         assert.equal(Lista.add("clave2","valor2"),true)
         assert.equal(Lista.count(),2)
-    })
+    });
+    /*En una lista vacia, comprobar el error al agregar elementos con claves vacias o que no sean cadenas*/
+    it("agrego 2 elementos con tipos mal", ()=>{
+        var Lista = new ListaN();
+        assert.equal(Lista.add(1,2),false)
+        assert.equal(Lista.add(1,"as"),false)
+        assert.equal(Lista.add("asd",1),false)
+        assert.equal(Lista.add("clave2",null),false)
+        assert.equal(Lista.add(null,"1"),false)
+        assert.equal(Lista.count(),0)
+    });
 })
