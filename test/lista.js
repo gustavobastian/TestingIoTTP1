@@ -28,11 +28,11 @@ Pruebas a realizar
 */
 
 const assert = require("chai").assert;
-const Lista = require("../src/lista");
+const ListaN = require("../src/lista");
 
 describe("en una lista vacia", ()=>{
 
-    var Lista = new Lista();
+    var Lista = new ListaN();
 
     it("hay cero elementos", ()=>{
         assert.equal(Lista.count(),0)
