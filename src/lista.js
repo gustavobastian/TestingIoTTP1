@@ -67,4 +67,8 @@ module.exports = class Lista{
             return false;
         }
     }
+
+    async getLista(){
+        return this.ArregloDeElementos;       
+    }
 };
