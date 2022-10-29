@@ -204,8 +204,7 @@ describe("Obtención de lista ordenada", ()=>{
 
           
     /*
-    * En una lista con tres o mas elementos, agregar una clave menor que todas las existentes, comprobar que la lista de claves se obtiene siempre ordenada
-    * En una lista con tres o mas elementos, agregar una clave mayor que todas las existentes, comprobar que la lista de claves se obtiene siempre ordenada
+    * En una lista con tres o mas elementos, agregar una clave menor que todas las existentes, comprobar que la lista de claves se obtiene siempre ordenada    
     * En una lista con tres o mas elementos, agregar una clave menor intermedia entre las existentes, comprobar que la lista de claves se obtiene siempre ordenada
     */
 
@@ -230,6 +229,53 @@ describe("Obtención de lista ordenada", ()=>{
         }
         
     });
+
+
+    it("Al agregar 1 menor se obtiene la lista ordenada",async ()=>{
+        var Lista = new lista();  
+        await Lista.add("uno","1");
+        await Lista.add("dos","2"); 
+        await Lista.add("cuatro","4"); 
+
+        /*En una lista con tres o mas elementos, agregar una clave mayor que todas las existentes, comprobar que la lista de claves se obtiene siempre ordenada*/
+        await Lista.add("tres","3"); 
+        
+        let listaOrdenada= [{'clave':"uno",'valor':"1"},{'clave':"dos",'valor':"2"},{'clave':"tres",'valor':"3"},{'clave':"cuatro",'valor':"4"}]
+        
+        var resultado= await Lista.getLista();
+
+        for (let index = 0; index < listaOrdenada.length; index++) {
+
+            assert.equal(resultado[index].clave, listaOrdenada[index].clave);
+            assert.equal(resultado[index].valor, listaOrdenada[index].valor);
+            
+        }
+        
+    });
+
+    it("Al agregar desordenados se obtiene la lista ordenada",async ()=>{
+        var Lista = new lista();  
+        await Lista.add("dos","2");
+        await Lista.add("cuatro","4"); 
+        await Lista.add("uno","1"); 
+
+        /*En una lista con tres o mas elementos, agregar una clave mayor que todas las existentes, comprobar que la lista de claves se obtiene siempre ordenada*/
+        await Lista.add("tres","3"); 
+        
+        let listaOrdenada= [{'clave':"uno",'valor':"1"},{'clave':"dos",'valor':"2"},{'clave':"tres",'valor':"3"},{'clave':"cuatro",'valor':"4"}]
+        
+        var resultado= await Lista.getLista();
+
+        for (let index = 0; index < listaOrdenada.length; index++) {
+
+            assert.equal(resultado[index].clave, listaOrdenada[index].clave);
+            assert.equal(resultado[index].valor, listaOrdenada[index].valor);
+            
+        }
+        
+    });
+
+
 
 
 })
