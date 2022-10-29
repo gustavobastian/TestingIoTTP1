@@ -9,14 +9,52 @@ module.exports = class Lista{
     }
 
     async add(clave,valor){
+        let auxiliar=false;
+        
         if(((clave==null) || (valor==null))||(typeof(clave)!='string')||(typeof(valor)!='string')){
             return false;
         }       
         let busqueda= await this.find(clave);        
         if(busqueda==null){
-            let element={'clave':clave,'valor':valor};
-            this.ArregloDeElementos.push(element);        
+            auxiliar=true;            
+        }
+        
+        if(auxiliar==true){
+            let elementoLocal={'clave':clave,'valor':valor};            
+            let agregado= false;
+            let arregloAuxiliar=[]
+            if(this.ArregloDeElementos.length==0){
+                this.ArregloDeElementos.push(elementoLocal);  
+                return true;    
+            }
+
+            else{
+                /*sorting
+                */
+                
+                this.ArregloDeElementos.push(elementoLocal);                  
+
+                this.ArregloDeElementos.forEach(async element => {
+                    if(element.valor<=elementoLocal.valor){
+                        
+                        arregloAuxiliar.push(element)
+                    }
+                    else 
+                    {
+                        if(agregado==false){
+                            arregloAuxiliar.push(elementoLocal);
+                            arregloAuxiliar.push(element);
+                            agregado=true;
+                        }
+                        else{
+                            arregloAuxiliar.push(element);
+                        }                        
+                    }    
+                });  
+                
+                this.ArregloDeElementos=arregloAuxiliar;
             return true;
+            }
         }
         else{
             return false;
@@ -25,11 +63,14 @@ module.exports = class Lista{
 
     async find(clave){
         let value=null;        
-        await this.ArregloDeElementos.forEach(element => {            
-            if(element.clave==clave){          
-                value=element.valor;
-            }
-        });
+        if(this.ArregloDeElementos.length>0){
+            await this.ArregloDeElementos.forEach(element => {            
+                if(element.clave==clave){          
+                    value=element.valor;
+                }
+            });
+        }
+        
         return value;
     }
 
