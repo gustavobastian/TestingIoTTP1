@@ -10,7 +10,8 @@ module.exports = class Lista{
 
     async add(clave,valor){
         let auxiliar=false;
-        
+        let arregloAuxiliar=[]
+        let elementoLocal={'clave':clave,'valor':valor};
         if(((clave==null) || (valor==null))||(typeof(clave)!='string')||(typeof(valor)!='string')){
             return false;
         }       
@@ -20,41 +21,42 @@ module.exports = class Lista{
         }
         
         if(auxiliar==true){
-            let elementoLocal={'clave':clave,'valor':valor};            
-            let agregado= false;
-            let arregloAuxiliar=[]
+            //caso especial, no hay elementos
             if(this.ArregloDeElementos.length==0){
-                this.ArregloDeElementos.push(elementoLocal);  
-                return true;    
+                this.ArregloDeElementos.push(elementoLocal); 
+                return true;     
             }
-
+            //caso especial, en nuevo valor es mayor que el mayor de la lista
+            else if ((parseInt(this.ArregloDeElementos[this.ArregloDeElementos.length-1].valor.toString())<parseInt(elementoLocal.valor.toString()))){               
+                this.ArregloDeElementos.push(elementoLocal); 
+                return true;     
+            }
+            
             else{
-                /*sorting
-                */
                 
-                this.ArregloDeElementos.push(elementoLocal);                  
+                let index=0;                
+                
+                while ((parseInt(this.ArregloDeElementos[index].valor.toString())<parseInt(elementoLocal.valor.toString()))&&(index<this.ArregloDeElementos.length-1)){                   
+                    arregloAuxiliar.push(this.ArregloDeElementos[index])
+                  //  console.log(arregloAuxiliar)
+                    index++;
+                }
+                
+                arregloAuxiliar.push(elementoLocal)
+                
+                while (index<this.ArregloDeElementos.length){
+                    arregloAuxiliar.push(this.ArregloDeElementos[index]);                
+                    index++;
+                }
+                
 
-                this.ArregloDeElementos.forEach(async element => {
-                    if(element.valor<=elementoLocal.valor){
-                        
-                        arregloAuxiliar.push(element)
-                    }
-                    else 
-                    {
-                        if(agregado==false){
-                            arregloAuxiliar.push(elementoLocal);
-                            arregloAuxiliar.push(element);
-                            agregado=true;
-                        }
-                        else{
-                            arregloAuxiliar.push(element);
-                        }                        
-                    }    
-                });  
-                
                 this.ArregloDeElementos=arregloAuxiliar;
-            return true;
+                
+                return true;
             }
+
+            
+           
         }
         else{
             return false;
@@ -110,6 +112,11 @@ module.exports = class Lista{
     }
 
     async getLista(){
-        return this.ArregloDeElementos;       
+
+        
+        return   this.ArregloDeElementos;
+        
     }
+
+    
 };

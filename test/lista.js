@@ -17,7 +17,6 @@ describe("en una lista vacia", ()=>{
     /*
     * En una lista vacia, comprobar el error al borrar una clave
     */
-    
 
     it("No se puede borrar en lista vacia", async ()=>{
         var resultado=await Lista.delete("uno");    
@@ -257,14 +256,40 @@ describe("Obtención de lista ordenada", ()=>{
         var Lista = new lista();  
         await Lista.add("dos","2");
         await Lista.add("cuatro","4"); 
-        await Lista.add("uno","1"); 
-
-        /*En una lista con tres o mas elementos, agregar una clave mayor que todas las existentes, comprobar que la lista de claves se obtiene siempre ordenada*/
+        await Lista.add("uno","1");         
         await Lista.add("tres","3"); 
         
         let listaOrdenada= [{'clave':"uno",'valor':"1"},{'clave':"dos",'valor':"2"},{'clave':"tres",'valor':"3"},{'clave':"cuatro",'valor':"4"}]
         
         var resultado= await Lista.getLista();
+
+        for (let index = 0; index < listaOrdenada.length; index++) {
+
+            assert.equal(resultado[index].clave, listaOrdenada[index].clave);
+            assert.equal(resultado[index].valor, listaOrdenada[index].valor);
+            
+        }
+        
+    });
+
+    /**test con una lista con mas elementos */
+    it("Al agregar desordenados se obtiene la lista ordenada(lista con mayor cantidad de elementos)",async ()=>{
+        var Lista = new lista();  
+        await Lista.add("dos","2");        
+        await Lista.add("uno","1"); 
+        await Lista.add("cuatro","4");
+        
+        await Lista.add("cinco","5"); 
+        await Lista.add("diez","10"); 
+        await Lista.add("once","11"); 
+
+        
+        await Lista.add("tres","3"); 
+        
+        let listaOrdenada= [{'clave':"uno",'valor':"1"},{'clave':"dos",'valor':"2"},{'clave':"tres",'valor':"3"},{'clave':"cuatro",'valor':"4"},{'clave':"cinco",'valor':"5"},{'clave':"diez",'valor':"10"},{'clave':"once",'valor':"11"}
+                            ]
+        
+        resultado= await Lista.getLista();
 
         for (let index = 0; index < listaOrdenada.length; index++) {
 
