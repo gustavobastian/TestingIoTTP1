@@ -42,7 +42,7 @@ module.exports = class Lista
             
             else{                
                 let index=0;                                
-                while (((this.Elementos[index].clave)<(elementoLocal.clave)))
+                while ((this.Elementos[index].clave)<(elementoLocal.clave))
                 {                   
                    
                     arregloAuxiliar.push(this.Elementos[index]);
@@ -69,7 +69,8 @@ module.exports = class Lista
         }
     }
 
-    async find(clave){
+    async find(clave)
+    {
         let value=null; 
         let indice=this.indexOf(clave);        
 
