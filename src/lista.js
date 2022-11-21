@@ -1,11 +1,11 @@
 module.exports = class Lista{
     
     constructor(){          
-        this.ArregloDeElementos=[];
+        this.Elementos=[];
     };
 
     count(){        
-        return  this.ArregloDeElementos.length;
+        return  this.Elementos.length;
     }
 
     async add(clave,valor){
@@ -22,13 +22,13 @@ module.exports = class Lista{
         
         if(auxiliar==true){
             //caso especial, no hay elementos
-            if(this.ArregloDeElementos.length==0){
-                this.ArregloDeElementos.push(elementoLocal); 
+            if(this.Elementos.length==0){
+                this.Elementos.push(elementoLocal); 
                 return true;     
             }
             //caso especial, el nuevo valor es mayor que el mayor de la lista
-            else if (((this.ArregloDeElementos[this.ArregloDeElementos.length-1].clave.toString())<(elementoLocal.clave.toString()))){               
-                this.ArregloDeElementos.push(elementoLocal); 
+            else if (((this.Elementos[this.Elementos.length-1].clave.toString())<(elementoLocal.clave.toString()))){               
+                this.Elementos.push(elementoLocal); 
                 return true;     
             }
             
@@ -36,21 +36,21 @@ module.exports = class Lista{
                 
                 let index=0;                
                 
-                while (((this.ArregloDeElementos[index].clave.toString())<(elementoLocal.clave.toString()))&&
-                        (index<this.ArregloDeElementos.length-1)){                   
+                while (((this.Elementos[index].clave.toString())<(elementoLocal.clave.toString()))&&
+                        (index<this.Elementos.length-1)){                   
                    
-                    arregloAuxiliar.push(this.ArregloDeElementos[index])
+                    arregloAuxiliar.push(this.Elementos[index])
                     index++;
                 }
                 
                 arregloAuxiliar.push(elementoLocal)
                 
-                while (index<this.ArregloDeElementos.length){
-                    arregloAuxiliar.push(this.ArregloDeElementos[index]);                
+                while (index<this.Elementos.length){
+                    arregloAuxiliar.push(this.Elementos[index]);                
                     index++;
                 }
                 
-                this.ArregloDeElementos=arregloAuxiliar;
+                this.Elementos=arregloAuxiliar;
                 
                 return true;
             }
@@ -65,8 +65,8 @@ module.exports = class Lista{
 
     async find(clave){
         let value=null;        
-        if(this.ArregloDeElementos.length>0){
-            await this.ArregloDeElementos.forEach(element => {            
+        if(this.Elementos.length>0){
+            await this.Elementos.forEach(element => {            
                 if(element.clave==clave){          
                     value=element.valor;
                 }
@@ -83,7 +83,7 @@ module.exports = class Lista{
         }
         else{
             let indice=await this.indexOf(clave);                        
-            this.ArregloDeElementos.splice(indice,1)
+            this.Elementos.splice(indice,1)
             return true;
         }
 
@@ -91,8 +91,8 @@ module.exports = class Lista{
 
     indexOf(clave){
         let value=null;        
-            for (let i = 0; i < this.ArregloDeElementos.length; i++) {
-                if (clave == this.ArregloDeElementos[i].clave) {
+            for (let i = 0; i < this.Elementos.length; i++) {
+                if (clave == this.Elementos[i].clave) {
                     return value = i;
                 }
             };        
@@ -103,7 +103,7 @@ module.exports = class Lista{
         let result= await this.find(clave);
         if(result!=null){            
             let indice=this.indexOf(clave);
-            this.ArregloDeElementos[indice].valor=valor;
+            this.Elementos[indice].valor=valor;
             return true;
         }
         else{            
@@ -113,7 +113,7 @@ module.exports = class Lista{
 
     async getLista(){
         let output=[]
-        this.ArregloDeElementos.forEach(element => {
+        this.Elementos.forEach(element => {
             output.push({'clave':element.clave})
         });        
         return   output;
