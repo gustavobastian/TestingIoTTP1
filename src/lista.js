@@ -48,10 +48,9 @@ module.exports = class Lista{
                 while (index<this.Elementos.length){
                     arregloAuxiliar.push(this.Elementos[index]);                
                     index++;
-                }
-                
+                }                
                 this.Elementos=arregloAuxiliar;
-                
+
                 return true;
             }
 
@@ -64,26 +63,29 @@ module.exports = class Lista{
     }
 
     async find(clave){
-        let value=null;        
-        if(this.Elementos.length>0){
-            await this.Elementos.forEach(element => {            
-                if(element.clave==clave){          
-                    value=element.valor;
-                }
-            });
+        let value=null; 
+        let indice=this.indexOf(clave);        
+
+        if(indice!=null)
+        {
+            value=this.Elementos[indice].valor;
         }
+        else 
+        {
+            value=null;
+        }
+
         
         return value;
     }
 
     async delete(clave){                
-        let resultado= await this.find(clave);        
+        let resultado= await this.indexOf(clave);                        
         if(resultado==null){            
             return false;
         }
-        else{
-            let indice=await this.indexOf(clave);                        
-            this.Elementos.splice(indice,1)
+        else{            
+            this.Elementos.splice(resultado,1)
             return true;
         }
 
@@ -96,8 +98,9 @@ module.exports = class Lista{
                     return value = i;
                 }
             };        
-
+        return value;
     }
+    
     async update(clave,valor){
         
         let result= await this.find(clave);
