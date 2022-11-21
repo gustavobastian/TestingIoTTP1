@@ -11,7 +11,7 @@ module.exports = class Lista
         return  this.Elementos.length;
     }
 
-    async add(clave,valor){
+    add(clave,valor){
         let auxiliar=false;
         let arregloAuxiliar=[];
         let elementoLocal={'clave':clave,'valor':valor};
@@ -21,7 +21,7 @@ module.exports = class Lista
         {
             return false;
         }       
-        let busqueda= await this.find(clave);        
+        let busqueda= this.find(clave);        
         if(busqueda==null)
         {
             auxiliar=true;            
@@ -69,7 +69,7 @@ module.exports = class Lista
         }
     }
 
-    async find(clave)
+    find(clave)
     {
         let value=null; 
         let indice=this.indexOf(clave);        
@@ -87,9 +87,9 @@ module.exports = class Lista
         return value;
     }
 
-    async delete(clave)
+     delete(clave)
     {                
-        let resultado= await this.indexOf(clave);                        
+        let resultado= this.indexOf(clave);                        
         if(resultado==null)
         {            
             return false;
@@ -114,10 +114,10 @@ module.exports = class Lista
         return value;
     }
 
-    async update(clave,valor)
+    update(clave,valor)
     {
         
-        let result= await this.find(clave);
+        let result= this.find(clave);
         if(result!=null)
         {            
             let indice=this.indexOf(clave);
@@ -130,7 +130,7 @@ module.exports = class Lista
         }
     }
 
-    async getLista()
+    getLista()
     {
         let output=[]
         this.Elementos.forEach(element => {
