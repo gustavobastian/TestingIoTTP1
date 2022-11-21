@@ -1,22 +1,29 @@
-module.exports = class Lista{
+module.exports = class Lista
+{
     
-    constructor(){          
+    constructor()
+    {          
         this.Elementos=[];
     };
 
-    count(){        
+    count()
+    {        
         return  this.Elementos.length;
     }
 
     async add(clave,valor){
         let auxiliar=false;
-        let arregloAuxiliar=[]
+        let arregloAuxiliar=[];
         let elementoLocal={'clave':clave,'valor':valor};
-        if(((clave==null) || (valor==null))||(typeof(clave)!='string')){
+        let lenElements=this.Elementos.length;
+
+        if(((clave==null) || (valor==null))||(typeof(clave)!='string'))
+        {
             return false;
         }       
         let busqueda= await this.find(clave);        
-        if(busqueda==null){
+        if(busqueda==null)
+        {
             auxiliar=true;            
         }
         
@@ -27,23 +34,26 @@ module.exports = class Lista{
                 return true;     
             }
             //caso especial, el nuevo valor es mayor que el mayor de la lista
-            else if (((this.Elementos[this.Elementos.length-1].clave.toString())<(elementoLocal.clave.toString()))){               
+            else if ((this.Elementos[lenElements-1].clave)<(elementoLocal.clave))
+            {               
                 this.Elementos.push(elementoLocal); 
                 return true;     
             }
             
-            else{
-                
-                let index=0;                
-                
-                while (((this.Elementos[index].clave.toString())<(elementoLocal.clave.toString()))&&
-                        (index<this.Elementos.length-1)){                   
+            else{                
+                let index=0;                                
+                while (((this.Elementos[index].clave)<(elementoLocal.clave)))
+                {                   
                    
-                    arregloAuxiliar.push(this.Elementos[index])
+                    arregloAuxiliar.push(this.Elementos[index]);
                     index++;
+                    if (index==this.Elementos.length-1)
+                    {
+                        break;
+                    }
                 }
                 
-                arregloAuxiliar.push(elementoLocal)
+                arregloAuxiliar.push(elementoLocal);
                 
                 while (index<this.Elementos.length){
                     arregloAuxiliar.push(this.Elementos[index]);                
@@ -53,9 +63,6 @@ module.exports = class Lista{
 
                 return true;
             }
-
-            
-           
         }
         else{
             return false;
@@ -79,9 +86,11 @@ module.exports = class Lista{
         return value;
     }
 
-    async delete(clave){                
+    async delete(clave)
+    {                
         let resultado= await this.indexOf(clave);                        
-        if(resultado==null){            
+        if(resultado==null)
+        {            
             return false;
         }
         else{            
@@ -91,30 +100,37 @@ module.exports = class Lista{
 
     }
 
-    indexOf(clave){
+    indexOf(clave)
+    {
         let value=null;        
-            for (let i = 0; i < this.Elementos.length; i++) {
-                if (clave == this.Elementos[i].clave) {
+            for (let i = 0; i < this.Elementos.length; i++) 
+            {
+                if (clave == this.Elementos[i].clave) 
+                {
                     return value = i;
                 }
             };        
         return value;
     }
-    
-    async update(clave,valor){
+
+    async update(clave,valor)
+    {
         
         let result= await this.find(clave);
-        if(result!=null){            
+        if(result!=null)
+        {            
             let indice=this.indexOf(clave);
             this.Elementos[indice].valor=valor;
             return true;
         }
-        else{            
+        else
+        {            
             return false;
         }
     }
 
-    async getLista(){
+    async getLista()
+    {
         let output=[]
         this.Elementos.forEach(element => {
             output.push({'clave':element.clave})
