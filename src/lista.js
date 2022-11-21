@@ -12,7 +12,7 @@ module.exports = class Lista{
         let auxiliar=false;
         let arregloAuxiliar=[]
         let elementoLocal={'clave':clave,'valor':valor};
-        if(((clave==null) || (valor==null))||(typeof(clave)!='string')||(typeof(valor)!='string')){
+        if(((clave==null) || (valor==null))||(typeof(clave)!='string')){
             return false;
         }       
         let busqueda= await this.find(clave);        
@@ -38,8 +38,8 @@ module.exports = class Lista{
                 
                 while (((this.ArregloDeElementos[index].clave.toString())<(elementoLocal.clave.toString()))&&
                         (index<this.ArregloDeElementos.length-1)){                   
+                   
                     arregloAuxiliar.push(this.ArregloDeElementos[index])
-                  
                     index++;
                 }
                 
@@ -115,8 +115,7 @@ module.exports = class Lista{
         let output=[]
         this.ArregloDeElementos.forEach(element => {
             output.push({'clave':element.clave})
-        });
-        
+        });        
         return   output;
         
     }
