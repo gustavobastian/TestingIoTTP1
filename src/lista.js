@@ -26,8 +26,8 @@ module.exports = class Lista{
                 this.ArregloDeElementos.push(elementoLocal); 
                 return true;     
             }
-            //caso especial, en nuevo valor es mayor que el mayor de la lista
-            else if ((parseInt(this.ArregloDeElementos[this.ArregloDeElementos.length-1].valor.toString())<parseInt(elementoLocal.valor.toString()))){               
+            //caso especial, el nuevo valor es mayor que el mayor de la lista
+            else if (((this.ArregloDeElementos[this.ArregloDeElementos.length-1].clave.toString())<(elementoLocal.clave.toString()))){               
                 this.ArregloDeElementos.push(elementoLocal); 
                 return true;     
             }
@@ -36,9 +36,10 @@ module.exports = class Lista{
                 
                 let index=0;                
                 
-                while ((parseInt(this.ArregloDeElementos[index].valor.toString())<parseInt(elementoLocal.valor.toString()))&&(index<this.ArregloDeElementos.length-1)){                   
+                while (((this.ArregloDeElementos[index].clave.toString())<(elementoLocal.clave.toString()))&&
+                        (index<this.ArregloDeElementos.length-1)){                   
                     arregloAuxiliar.push(this.ArregloDeElementos[index])
-                  //  console.log(arregloAuxiliar)
+                  
                     index++;
                 }
                 
@@ -49,7 +50,6 @@ module.exports = class Lista{
                     index++;
                 }
                 
-
                 this.ArregloDeElementos=arregloAuxiliar;
                 
                 return true;
@@ -112,9 +112,12 @@ module.exports = class Lista{
     }
 
     async getLista(){
-
+        let output=[]
+        this.ArregloDeElementos.forEach(element => {
+            output.push({'clave':element.clave})
+        });
         
-        return   this.ArregloDeElementos;
+        return   output;
         
     }
 
