@@ -27,39 +27,9 @@ module.exports = class Lista
         }
         if (auxiliar==true)
         {
-            //caso especial, no hay elementos
-            if (this.Elementos.length==0)
-            {
-                this.Elementos.push(elementoLocal); 
-                return true;     
-            }
-            //caso especial, el nuevo valor es mayor que el mayor de la lista
-            else if ((this.Elementos[lenElements-1].clave)<(elementoLocal.clave))
-            {               
-                this.Elementos.push(elementoLocal); 
-                return true;     
-            }
-            else
-            {                
-                let index=0;                                
-                while ((this.Elementos[index].clave)<(elementoLocal.clave))
-                {                   
-                    arregloAuxiliar.push(this.Elementos[index]);
-                    index++;
-                    if (index==this.Elementos.length-1)
-                    {
-                        break;
-                    }
-                }
-                arregloAuxiliar.push(elementoLocal);
-                while (index<this.Elementos.length)
-                {
-                    arregloAuxiliar.push(this.Elementos[index]);                
-                    index++;
-                }                
-                this.Elementos=arregloAuxiliar;
-                return true;
-            }
+            this.Elementos.push(elementoLocal); 
+            return true;     
+           
         }
         else
         {
@@ -129,8 +99,9 @@ module.exports = class Lista
         let output=[]
         this.Elementos.forEach(element => 
         {
-            output.push({'clave':element.clave})
+            output.push(element.clave)
         });        
+        output.sort();
         return   output;        
     }
 };
