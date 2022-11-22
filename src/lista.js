@@ -21,14 +21,14 @@ module.exports = class Lista
             return false;
         }       
         let busqueda= this.find(clave);        
-        if(busqueda==null)
+        if (busqueda==null)
         {
             auxiliar=true;            
         }
-        if(auxiliar==true)
+        if (auxiliar==true)
         {
             //caso especial, no hay elementos
-            if(this.Elementos.length==0)
+            if (this.Elementos.length==0)
             {
                 this.Elementos.push(elementoLocal); 
                 return true;     
@@ -71,7 +71,7 @@ module.exports = class Lista
     {
         let value=null; 
         let indice=this.indexOf(clave);        
-        if(indice!=null)
+        if (indice!=null)
         {
             value=this.Elementos[indice].valor;
         }
@@ -85,7 +85,7 @@ module.exports = class Lista
     delete(clave)
     {                
         let resultado= this.indexOf(clave);                        
-        if(resultado==null)
+        if (resultado==null)
         {            
             return false;
         }
@@ -112,7 +112,7 @@ module.exports = class Lista
     update(clave,valor)
     {
         let result= this.find(clave);
-        if(result!=null)
+        if (result!=null)
         {            
             let indice=this.indexOf(clave);
             this.Elementos[indice].valor=valor;
