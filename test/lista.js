@@ -188,8 +188,7 @@ describe("En una lista con tres o mas elementos", ()=>
         await Lista.add("dos","2");                  
         await Lista.add("seis","6");           
         let listaOrdenada= [{'clave':"cuatro"},{'clave':"dos"},{'clave':"seis"},{'clave':"uno"}]          
-        var resultado= await Lista.getLista(); 
- 
+        var resultado= await Lista.getLista();  
         for (let index = 0; index < listaOrdenada.length; index++) 
         {
             assert.equal(resultado[index].clave, listaOrdenada[index].clave);         
@@ -207,8 +206,7 @@ describe("En una lista con tres o mas elementos", ()=>
         for (let index = 0; index < listaOrdenada.length; index++) 
         {
             assert.equal(resultado[index].clave, listaOrdenada[index].clave);
-        }
-        
+        }        
     });
     it("Al agregar claves desordenadas se obtiene la lista ordenada",async ()=>
     {
@@ -239,7 +237,6 @@ describe("En una lista con tres o mas elementos", ()=>
                             {'clave':'tres'},{'clave':'uno'}]                     
 
         resultado= await Lista.getLista();
-
         for (let index = 0; index < listaOrdenada.length; index++) 
         {
             assert.equal(resultado[index].clave, listaOrdenada[index].clave);
