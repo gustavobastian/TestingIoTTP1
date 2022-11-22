@@ -1,6 +1,5 @@
 module.exports = class Lista
 {
-    
     constructor()
     {          
         this.Elementos=[];
@@ -11,12 +10,12 @@ module.exports = class Lista
         return  this.Elementos.length;
     }
 
-    add(clave,valor){
+    add(clave,valor)
+    {
         let auxiliar=false;
         let arregloAuxiliar=[];
         let elementoLocal={'clave':clave,'valor':valor};
         let lenElements=this.Elementos.length;
-
         if(((clave==null) || (valor==null))||(typeof(clave)!='string'))
         {
             return false;
@@ -26,10 +25,11 @@ module.exports = class Lista
         {
             auxiliar=true;            
         }
-        
-        if(auxiliar==true){
+        if(auxiliar==true)
+        {
             //caso especial, no hay elementos
-            if(this.Elementos.length==0){
+            if(this.Elementos.length==0)
+            {
                 this.Elementos.push(elementoLocal); 
                 return true;     
             }
@@ -39,12 +39,11 @@ module.exports = class Lista
                 this.Elementos.push(elementoLocal); 
                 return true;     
             }
-            
-            else{                
+            else
+            {                
                 let index=0;                                
                 while ((this.Elementos[index].clave)<(elementoLocal.clave))
                 {                   
-                   
                     arregloAuxiliar.push(this.Elementos[index]);
                     index++;
                     if (index==this.Elementos.length-1)
@@ -52,19 +51,18 @@ module.exports = class Lista
                         break;
                     }
                 }
-                
                 arregloAuxiliar.push(elementoLocal);
-                
-                while (index<this.Elementos.length){
+                while (index<this.Elementos.length)
+                {
                     arregloAuxiliar.push(this.Elementos[index]);                
                     index++;
                 }                
                 this.Elementos=arregloAuxiliar;
-
                 return true;
             }
         }
-        else{
+        else
+        {
             return false;
         }
     }
@@ -73,7 +71,6 @@ module.exports = class Lista
     {
         let value=null; 
         let indice=this.indexOf(clave);        
-
         if(indice!=null)
         {
             value=this.Elementos[indice].valor;
@@ -82,41 +79,38 @@ module.exports = class Lista
         {
             value=null;
         }
-
-        
         return value;
     }
 
-     delete(clave)
+    delete(clave)
     {                
         let resultado= this.indexOf(clave);                        
         if(resultado==null)
         {            
             return false;
         }
-        else{            
+        else
+        {            
             this.Elementos.splice(resultado,1)
             return true;
         }
-
     }
 
     indexOf(clave)
     {
         let value=null;        
-            for (let i = 0; i < this.Elementos.length; i++) 
+        for (let i = 0; i < this.Elementos.length; i++) 
+        {
+            if (clave == this.Elementos[i].clave) 
             {
-                if (clave == this.Elementos[i].clave) 
-                {
-                    return value = i;
-                }
-            };        
+                return value = i;
+            }
+        };        
         return value;
     }
 
     update(clave,valor)
     {
-        
         let result= this.find(clave);
         if(result!=null)
         {            
@@ -133,12 +127,10 @@ module.exports = class Lista
     getLista()
     {
         let output=[]
-        this.Elementos.forEach(element => {
+        this.Elementos.forEach(element => 
+        {
             output.push({'clave':element.clave})
         });        
-        return   output;
-        
+        return   output;        
     }
-
-    
 };
