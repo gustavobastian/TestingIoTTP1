@@ -12,10 +12,8 @@ module.exports = class Lista
 
     add(clave,valor)
     {
-        let auxiliar=false;
-        let arregloAuxiliar=[];
+        let auxiliar=false;        
         let elementoLocal={'clave':clave,'valor':valor};
-        let lenElements=this.Elementos.length;
         if(((clave==null) || (valor==null))||(typeof(clave)!='string'))
         {
             return false;
@@ -25,7 +23,7 @@ module.exports = class Lista
         {
             auxiliar=true;            
         }
-        if (auxiliar==true)
+        if (auxiliar)
         {
             this.Elementos.push(elementoLocal); 
             return true;     
@@ -44,11 +42,7 @@ module.exports = class Lista
         if (indice!=null)
         {
             value=this.Elementos[indice].valor;
-        }
-        else 
-        {
-            value=null;
-        }
+        }        
         return value;
     }
 
@@ -68,15 +62,14 @@ module.exports = class Lista
 
     indexOf(clave)
     {
-        let value=null;        
         for (let i = 0; i < this.Elementos.length; i++) 
         {
             if (clave == this.Elementos[i].clave) 
             {
-                return value = i;
+                return i;
             }
         };        
-        return value;
+        return null;
     }
 
     update(clave,valor)

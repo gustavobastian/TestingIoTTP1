@@ -1,8 +1,6 @@
 # Repositorio Trabajo Práctico 1 de la materia Testing de Sistemas IoT
 
-
 En este trabajo práctico se implementa verificación y tésting de código. Es parte de la materia Testing de IoT dictada por Esteban Volentini (https://github.com/evolentini) y Carlos Pantelides (https://github.com/cpantel) y
-
 
 Herramientas que se utilizan:
 
@@ -17,7 +15,6 @@ Herramientas que se utilizan:
 * <strong>MOCHA</strong>: Framework que automatiza Testing para el lenguaje Javascript
 
         Url: https://mochajs.org/
-
 
 Enunciado: generar una clase llamada lista con los siguientes requerimientos:
 
@@ -57,5 +54,3 @@ Pruebas a realizar:
 * En una lista con elementos, borrar una clave y comprobar que al buscarla no existe
 * En una lista con elementos, comprobar el error al borrar una clave que no existe
 * En una lista vacia, comprobar el error al borrar una clave
-
-
